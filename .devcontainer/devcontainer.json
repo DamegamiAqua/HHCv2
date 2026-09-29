@@ -1,0 +1,34 @@
+{
+  "name": "Cofre Hero (Android + Kotlin)",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "containerEnv": {
+    "ANDROID_HOME": "/usr/local/android-sdk",
+    "ANDROID_SDK_ROOT": "/usr/local/android-sdk",
+    "GRADLE_OPTS": "-Dorg.gradle.daemon=true"
+  },
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/usr/local/android-sdk/cmdline-tools/latest/bin:/usr/local/android-sdk/platform-tools"
+  },
+  "postCreateCommand": "bash scripts/setup-codespace.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "fwcd.kotlin",
+        "vscjava.vscode-gradle",
+        "redhat.java"
+      ],
+      "settings": {
+        "java.import.gradle.enabled": false,
+        "java.configuration.updateBuildConfiguration": "disabled"
+      }
+    }
+  }
+}
